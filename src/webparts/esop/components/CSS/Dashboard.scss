@@ -1,0 +1,522 @@
+/* =========================================================
+   SHAREPOINT MODERN PAGE FULL WIDTH FIX
+========================================================= */
+
+#spCommandBar,
+#spSiteHeader,
+#spLeftNav,
+#CommentsWrapper,
+.sp-appBar,
+.CommandBarWrapper,
+.sp-pageChrome-appDiv,
+.od-TopBar,
+.sp-header,
+.sp-siteHeader,
+.sp-appBar-mobile,
+.ms-HubNav {
+  display: none !important;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#workbenchPageContent,
+#spPageCanvasContent,
+.CanvasComponent,
+.Canvas,
+.CanvasZone,
+.CanvasSection,
+.ControlZone,
+.CanvasZoneSectionContainer,
+.ms-SPLegacyFabricBlock,
+[data-automation-id="Canvas"],
+[data-automation-id="CanvasZone"],
+[data-automation-id="CanvasSection"],
+[data-automation-id="CanvasLayout"],
+[data-automation-id="CanvasControl"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#workbenchPageContent > div,
+#workbenchPageContent > div > div,
+#workbenchPageContent > div > div > div,
+.CanvasZone > div,
+.CanvasSection > div,
+.ControlZone > div {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.spAppAndPropertyPanelContainer,
+.mainContent,
+.RootFlexContainer,
+.ContentContainer,
+.SPCanvas,
+.pageContent,
+.CanvasHost {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.container,
+.container-fluid {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.ms-Fabric,
+.ms-Stack,
+.ms-StackItem {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+div,
+section {
+  box-sizing: border-box !important;
+}
+
+.CanvasComponent,
+.CanvasZone {
+  overflow: hidden !important;
+}
+
+body,
+#spPageCanvasContent {
+  display: block !important;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+/* ===================== END SHAREPOINT FIX ===================== */
+
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #f5f6fa;
+  font-family: "Segoe UI";
+}
+
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 10px 20px;
+
+  background: #000000;
+
+  border-bottom: 1px solid #000000;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  min-height: 64px;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .user-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .user-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #dcdcdc;
+    }
+  }
+}
+
+.dashboard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 11px;
+}
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.new-po-btn {
+  height: 40px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #000000;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #1f1f1f;
+  }
+}
+
+.dashboard-filter-card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 6px;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.dashboard-input,
+.dashboard-select {
+  height: 40px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+
+  padding: 0 14px;
+
+  font-size: 14px;
+
+  outline: none;
+  background: #ffffff;
+
+  transition: 0.2s ease;
+
+  &:focus {
+    border-color: #1e3a5f;
+    box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1);
+  }
+}
+
+.dashboard-input {
+  width: 240px;
+  min-width: 240px;
+}
+
+.dashboard-select {
+  min-width: 220px;
+}
+
+.table-card {
+  background: #ffffff;
+  border-radius: 8px;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+}
+
+.table-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid #eeeeee;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #000000;
+  }
+
+  span {
+    font-size: 14px;
+    color: #667085;
+    font-weight: 600;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0.5px solid #e5e7eb;
+
+  thead {
+    background: #000000;
+
+    th {
+      padding: 14px 16px;
+      text-align: left;
+
+      font-size: 13px;
+      font-weight: 600;
+
+      color: #ffffff;
+
+      white-space: nowrap;
+
+      border: 0.5px solid #e5e7eb;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: 0.2s ease;
+
+      &:hover {
+        background: #f9fafb;
+      }
+    }
+
+    td {
+      padding: 14px 16px;
+
+      font-size: 13px;
+      color: #333333;
+
+      white-space: nowrap;
+
+      border: 0.5px solid #e5e7eb;
+    }
+  }
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+.view-btn {
+  background: rgba(0, 120, 212, 0.1);
+  color: #0078d4;
+
+  &:hover {
+    background: rgba(0, 120, 212, 0.2);
+  }
+}
+
+.edit-btn {
+  background: rgba(16, 124, 16, 0.1);
+  color: #107c10;
+
+  &:hover {
+    background: rgba(16, 124, 16, 0.2);
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px !important;
+
+  color: #667085 !important;
+  font-size: 14px;
+}
+
+.black-loader-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+.black-spinner {
+  width: 52px;
+  height: 52px;
+
+  border: 4px solid #2c2c2c;
+  border-top: 4px solid #ffffff;
+
+  border-radius: 50%;
+
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  padding: 14px;
+
+  background: #ffffff;
+  border-top: 1px solid #eeeeee;
+}
+
+.page-btn {
+  padding: 6px 12px;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  background: #000000;
+  color: #ffffff;
+
+  font-size: 13px;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #1f1f1f;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.active-page {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-input {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .dashboard-select {
+    width: 100%;
+  }
+
+  .new-po-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-body {
+    padding: 16px;
+  }
+
+  .dashboard-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard-filter-card {
+    justify-content: stretch;
+  }
+
+  .dashboard-input,
+  .dashboard-select,
+  .new-po-btn {
+    width: 100%;
+  }
+
+  .dashboard-title {
+    font-size: 22px;
+  }
+
+  .header-right .user-name {
+    display: none;
+  }
+}

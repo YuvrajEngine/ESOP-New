@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.23.2",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "esop",
+    "libraryId": "9ded715e-7621-4414-b35e-468f3fc08cde",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "ESOP",
+    "solutionShortDescription": "ESOP description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
