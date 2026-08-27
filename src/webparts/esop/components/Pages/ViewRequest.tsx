@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useHistory, RouteComponentProps } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import sonaLogo from "../../assets/Images/SonaLogo.jpg";
 import UserAvatar from "../../assets/Images/UserAvatar.png";
@@ -9,9 +9,6 @@ import "../Esop.module.scss";
 
 type IViewRequestProps = IEsopProps & RouteComponentProps<{ id: string }>;
 
-// Pure UI, read-only. All fields are disabled — this page only displays
-// data. Once the backend is ready, fetch the record using props.match.params.id
-// and bind each field's value below.
 const ViewRequest: React.FC<IViewRequestProps> = (props) => {
   const history = useHistory();
 
@@ -208,7 +205,7 @@ const ViewRequest: React.FC<IViewRequestProps> = (props) => {
                 className="form-cancel-btn"
                 onClick={() => history.push("/")}
               >
-                <FontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faArrowLeft} />
                 <span>Back</span>
               </button>
             </div>

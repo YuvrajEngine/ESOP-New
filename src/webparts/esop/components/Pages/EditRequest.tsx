@@ -9,9 +9,6 @@ import "../Esop.module.scss";
 
 type IEditRequestProps = IEsopProps & RouteComponentProps<{ id: string }>;
 
-// Pure UI, editable. Once the backend is ready: fetch the record using
-// props.match.params.id, bind each field's value + onChange to state,
-// and wire the Update button to the save call.
 const EditRequest: React.FC<IEditRequestProps> = (props) => {
   const history = useHistory();
 
