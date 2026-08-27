@@ -509,6 +509,16 @@ body {
   gap: 24px;
 }
 
+/* Small "Employee ID: X" line shown at the top of View / Edit forms */
+.form-meta {
+  font-size: 14px;
+  color: #667085;
+
+  strong {
+    color: #000000;
+  }
+}
+
 /* Fixed 3-column grid on desktop so every field row lines up evenly,
    instead of auto-fill widths that shift with content length */
 .form-grid {
@@ -572,6 +582,14 @@ body {
 
 .form-select {
   cursor: pointer;
+}
+
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled {
+  background: #f5f6fa;
+  color: #667085;
+  cursor: not-allowed;
 }
 
 .form-textarea {
