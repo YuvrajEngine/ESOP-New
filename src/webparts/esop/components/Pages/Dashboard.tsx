@@ -139,7 +139,7 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
 
             <button
               className="new-po-btn"
-              onClick={() => history.push("/NewEsopRequest")}
+              onClick={() => history.push("/NewRequest")}
             >
               <FontAwesomeIcon icon={faPlus} />
               <span>Add New Employee</span>

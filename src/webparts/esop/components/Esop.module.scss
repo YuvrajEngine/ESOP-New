@@ -215,7 +215,7 @@ body {
   gap: 10px;
 
   .user-name {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     color: #ffffff;
   }
@@ -242,6 +242,22 @@ body {
   padding: 11px;
 }
 
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+}
+
 .new-po-btn {
   height: 40px;
   padding: 0 18px;
@@ -265,6 +281,11 @@ body {
 
   &:hover {
     background: #1f1f1f;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 }
 
@@ -508,6 +529,123 @@ body {
   border: 1px solid #000000;
 }
 
+/* =========================================================
+   NEW REQUEST FORM CSS START
+========================================================= */
+
+.form-card {
+  background: #ffffff;
+  border-radius: 8px;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.required-mark {
+  color: #d92d20;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  height: 40px;
+
+  border: 1px solid #656565;
+  border-radius: 6px;
+
+  padding: 0 14px;
+
+  font-size: 14px;
+  font-family: "Segoe UI";
+  color: #333333;
+
+  outline: none;
+  background: #ffffff;
+
+  transition: 0.2s ease;
+
+  &:focus {
+    border-color: #1e3a5f;
+    box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.1);
+  }
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-textarea {
+  height: auto;
+  min-height: 96px;
+  padding: 10px 14px;
+  resize: vertical;
+}
+
+.field-error {
+  font-size: 12px;
+  color: #d92d20;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  padding-top: 16px;
+  border-top: 1px solid #eeeeee;
+}
+
+.cancel-btn {
+  height: 40px;
+  padding: 0 18px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #333333;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #f5f6fa;
+  }
+}
+
+/* ===================== END NEW REQUEST FORM CSS ===================== */
+
 @media (max-width: 1024px) {
   .dashboard-input {
     width: 100%;
@@ -519,6 +657,11 @@ body {
   }
 
   .new-po-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .back-btn {
     width: 100%;
     justify-content: center;
   }
@@ -550,6 +693,24 @@ body {
 
   .header-right .user-name {
     display: none;
+  }
+
+  .form-card {
+    padding: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-btn,
+  .form-actions .new-po-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 }
