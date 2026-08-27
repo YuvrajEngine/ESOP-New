@@ -5,7 +5,6 @@ import { faPlus, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import sonaLogo from "../../assets/Images/SonaLogo.jpg";
 import UserAvatar from "../../assets/Images/UserAvatar.png";
-import "../CSS/Dashboard.scss";
 import "../Esop.module.scss";
 
 export interface IEsopItem {
@@ -41,7 +40,9 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
   };
 
   React.useEffect(() => {
-    if (props.userEmail) getDashboardData();
+    if (props.userEmail) {
+      void getDashboardData();
+    }
   }, [props.userEmail]);
 
   React.useEffect(() => {
@@ -71,7 +72,7 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
     currentPage * itemsPerPage,
   );
 
-  const changePage = (page: number) => {
+  const changePage = (page: number): void => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
@@ -102,7 +103,7 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
     <section className="dashboard-wrapper">
       {isLoading && (
         <div className="black-loader-overlay">
-          <div className="black-spinner"></div>
+          <div className="black-spinner" />
         </div>
       )}
 
@@ -115,7 +116,9 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
           </div>
 
           <div className="header-center">
-            <span className="header-title">ESOP Employee Master – Admin Dashboard</span>
+            <span className="header-title">
+              ESOP Employee Master – Admin Dashboard
+            </span>
           </div>
 
           <div className="header-right">
@@ -128,7 +131,6 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
         </div>
 
         <div className="dashboard-body">
-
           <div className="dashboard-filter-card">
             <input
               className="dashboard-input"
