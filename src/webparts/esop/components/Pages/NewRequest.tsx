@@ -1,99 +1,14 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
+import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import sonaLogo from "../../assets/Images/SonaLogo.jpg";
 import UserAvatar from "../../assets/Images/UserAvatar.png";
 import "../Esop.module.scss";
 
-type FieldType = "text" | "date" | "numeric" | "dropdown" | "textarea";
-
-interface IFieldConfig {
-  key: string;
-  label: string;
-  type: FieldType;
-  required?: boolean;
-  options?: string[];
-  fullWidth?: boolean;
-}
-
-const DEPARTMENT_OPTIONS = ["HR", "Finance", "IT", "Operations", "Sales"];
-
-const FIELD_CONFIG: IFieldConfig[] = [
-  { key: "EmployeeCode", label: "Employee Code", type: "text", required: true },
-  { key: "EmployeeName", label: "Employee Name", type: "text", required: true },
-  { key: "DateOfBirth", label: "Date of Birth", type: "date" },
-  { key: "DateOfJoining", label: "Date of Joining", type: "date" },
-  { key: "DateOfResignation", label: "Date of Resignation", type: "date" },
-  { key: "MobileNo", label: "Mobile No", type: "text" },
-  { key: "EmailId", label: "Email Id", type: "text", required: true },
-  { key: "PANNo", label: "PAN No", type: "text" },
-  { key: "PinCode", label: "Pin Code", type: "numeric" },
-  { key: "Age", label: "Age", type: "numeric" },
-  { key: "Gender", label: "Gender", type: "dropdown", options: ["Male", "Female", "Other"] },
-  { key: "Department", label: "Department", type: "dropdown", options: DEPARTMENT_OPTIONS },
-  { key: "Role", label: "Role", type: "text" },
-  { key: "Designation", label: "Designation", type: "text" },
-  { key: "Address", label: "Address", type: "textarea", fullWidth: true },
-  { key: "LevelName", label: "Level Name", type: "dropdown", options: ["User", "Admin"] },
-  { key: "FatherName", label: "Father Name", type: "text" },
-  { key: "IsActive", label: "Is Active", type: "dropdown", options: ["Yes", "No"] },
-  { key: "DateOfTermination", label: "Date of Termination", type: "date" },
-];
-
 const NewRequest: React.FC<IEsopProps> = (props) => {
   const history = useHistory();
-
-  const renderField = (field: IFieldConfig): React.ReactElement => {
-    let control: React.ReactElement;
-
-    switch (field.type) {
-      case "date":
-        control = <input id={field.key} type="date" className="form-input" />;
-        break;
-
-      case "numeric":
-        control = <input id={field.key} type="number" className="form-input" />;
-        break;
-
-      case "dropdown":
-        control = (
-          <select id={field.key} className="form-select" defaultValue="">
-            <option value="" disabled>
-              Select {field.label}
-            </option>
-            {field.options?.map((option) => (
-              <option key={option} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        );
-        break;
-
-      case "textarea":
-        control = <textarea id={field.key} className="form-textarea" rows={4} />;
-        break;
-
-      default:
-        control = <input id={field.key} type="text" className="form-input" />;
-        break;
-    }
-
-    return (
-      <div
-        key={field.key}
-        className={`form-group ${field.fullWidth ? "form-group-full" : ""}`}
-      >
-        <label className="form-label" htmlFor={field.key}>
-          {field.label}
-          {field.required && <span className="required-mark"> *</span>}
-        </label>
-        {control}
-      </div>
-    );
-  };
 
   return (
     <section className="dashboard-wrapper">
@@ -106,7 +21,7 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
           </div>
 
           <div className="header-center">
-            <span className="header-title">New Employee Request</span>
+            <span className="header-title">NEW EMPLOYEE REQUEST</span>
           </div>
 
           <div className="header-right">
@@ -119,20 +34,247 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
         </div>
 
         <div className="dashboard-body">
-
           <div className="form-card">
             <div className="form-grid">
-              {FIELD_CONFIG.map((field) => renderField(field))}
+              <div className="form-group">
+                <label className="form-label" htmlFor="EmployeeCode">
+                  Employee Code<span className="required-mark"> *</span>
+                </label>
+                <input
+                  id="EmployeeCode"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Employee Code"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="EmployeeName">
+                  Employee Name<span className="required-mark"> *</span>
+                </label>
+                <input
+                  id="EmployeeName"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Employee Name"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="DateOfBirth">
+                  Date of Birth
+                </label>
+                <input id="DateOfBirth" type="date" className="form-input" />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="DateOfJoining">
+                  Date of Joining
+                </label>
+                <input id="DateOfJoining" type="date" className="form-input" />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="DateOfResignation">
+                  Date of Resignation
+                </label>
+                <input
+                  id="DateOfResignation"
+                  type="date"
+                  className="form-input"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="MobileNo">
+                  Mobile No
+                </label>
+                <input
+                  id="MobileNo"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Mobile Number"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="EmailId">
+                  Email Id<span className="required-mark"> *</span>
+                </label>
+                <input
+                  id="EmailId"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Email Id"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="PANNo">
+                  PAN No
+                </label>
+                <input
+                  id="PANNo"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter PAN Number"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="PinCode">
+                  Pin Code
+                </label>
+                <input
+                  id="PinCode"
+                  type="number"
+                  className="form-input"
+                  placeholder="Enter Pin Code"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="Age">
+                  Age
+                </label>
+                <input
+                  id="Age"
+                  type="number"
+                  className="form-input"
+                  placeholder="Enter Age"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="Gender">
+                  Gender
+                </label>
+                <select id="Gender" className="form-select" defaultValue="">
+                  <option value="" disabled>
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="Department">
+                  Department
+                </label>
+                <select
+                  id="Department"
+                  className="form-select"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Department
+                  </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="Role">
+                  Role
+                </label>
+                <input
+                  id="Role"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Role"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="Designation">
+                  Designation
+                </label>
+                <input
+                  id="Designation"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Designation"
+                />
+              </div>
+
+              <div className="form-group form-group-full">
+                <label className="form-label" htmlFor="Address">
+                  Address
+                </label>
+                <textarea
+                  id="Address"
+                  className="form-textarea"
+                  rows={4}
+                  placeholder="Enter Address"
+                />
+              </div>
+            </div>
+
+            <div className="form-grid-4">
+              <div className="form-group">
+                <label className="form-label" htmlFor="LevelName">
+                  Level Name
+                </label>
+                <select
+                  id="LevelName"
+                  className="form-select"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select Level Name
+                  </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="FatherName">
+                  Father Name
+                </label>
+                <input
+                  id="FatherName"
+                  type="text"
+                  className="form-input"
+                  placeholder="Enter Father's Name"
+                />
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="IsActive">
+                  Is Active
+                </label>
+                <select id="IsActive" className="form-select" defaultValue="">
+                  <option value="" disabled>
+                    Select Status
+                  </option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label className="form-label" htmlFor="DateOfTermination">
+                  Date of Termination
+                </label>
+                <input
+                  id="DateOfTermination"
+                  type="date"
+                  className="form-input"
+                />
+              </div>
             </div>
 
             <div className="form-actions">
-              <button type="button" className="cancel-btn" onClick={() => history.push("/")}>
-                Cancel
-              </button>
-
-              <button type="button" className="new-po-btn">
+              <button type="button" className="form-save-btn">
                 <FontAwesomeIcon icon={faSave} />
                 <span>Save Request</span>
+              </button>
+              <button
+                type="button"
+                className="form-cancel-btn"
+                onClick={() => history.push("/")}
+              >
+                <FontAwesomeIcon icon={faTimes} />
+                <span>Cancel</span>
               </button>
             </div>
           </div>

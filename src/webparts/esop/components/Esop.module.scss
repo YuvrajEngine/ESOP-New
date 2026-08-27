@@ -242,22 +242,6 @@ body {
   padding: 11px;
 }
 
-.dashboard-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-
-  flex-wrap: wrap;
-}
-
-.dashboard-title {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  color: #000000;
-}
-
 .new-po-btn {
   height: 40px;
   padding: 0 18px;
@@ -341,27 +325,6 @@ body {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 
   overflow: hidden;
-}
-
-.table-header {
-  padding: 18px 20px;
-  border-bottom: 1px solid #eeeeee;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  h3 {
-    margin: 0;
-    font-size: 16px;
-    color: #000000;
-  }
-
-  span {
-    font-size: 14px;
-    color: #667085;
-    font-weight: 600;
-  }
 }
 
 .table-wrapper {
@@ -546,9 +509,11 @@ body {
   gap: 24px;
 }
 
+/* Fixed 3-column grid on desktop so every field row lines up evenly,
+   instead of auto-fill widths that shift with content length */
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px 20px;
 }
 
@@ -560,6 +525,14 @@ body {
 
 .form-group-full {
   grid-column: 1 / -1;
+}
+
+/* Level Name / Father Name / Is Active / Date of Termination row —
+   always exactly 4 across on desktop */
+.form-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px 20px;
 }
 
 .form-label {
@@ -608,30 +581,31 @@ body {
   resize: vertical;
 }
 
-.field-error {
-  font-size: 12px;
-  color: #d92d20;
-  font-weight: 500;
-}
-
 .form-actions {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
 
   padding-top: 16px;
   border-top: 1px solid #eeeeee;
 }
 
-.cancel-btn {
+.form-save-btn,
+.form-cancel-btn {
+  width: 160px;
   height: 40px;
   padding: 0 18px;
 
-  border: 1px solid #d0d5dd;
+  border: none;
   border-radius: 6px;
 
-  background: #ffffff;
-  color: #333333;
+  background: #000000;
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 
   font-size: 14px;
   font-weight: 600;
@@ -640,7 +614,7 @@ body {
   transition: 0.2s ease;
 
   &:hover {
-    background: #f5f6fa;
+    background: #1f1f1f;
   }
 }
 
@@ -661,20 +635,18 @@ body {
     justify-content: center;
   }
 
-  .back-btn {
-    width: 100%;
-    justify-content: center;
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .dashboard-body {
     padding: 16px;
-  }
-
-  .dashboard-top {
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .dashboard-filter-card {
@@ -685,10 +657,6 @@ body {
   .dashboard-select,
   .new-po-btn {
     width: 100%;
-  }
-
-  .dashboard-title {
-    font-size: 22px;
   }
 
   .header-right .user-name {
@@ -703,12 +671,16 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .form-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
   .form-actions {
     flex-direction: column-reverse;
   }
 
-  .cancel-btn,
-  .form-actions .new-po-btn {
+  .form-save-btn,
+  .form-cancel-btn {
     width: 100%;
     justify-content: center;
   }
