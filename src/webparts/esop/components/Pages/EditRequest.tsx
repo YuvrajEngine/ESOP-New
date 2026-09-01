@@ -3,8 +3,7 @@ import { useHistory, RouteComponentProps } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
 import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import sonaLogo from "../../assets/Images/SonaLogo.jpg";
-import UserAvatar from "../../assets/Images/UserAvatar.png";
+import Sidebar from "../Pages/SideBar";
 import "../Esop.module.scss";
 
 type IEditRequestProps = IEsopProps & RouteComponentProps<{ id: string }>;
@@ -14,24 +13,12 @@ const EditRequest: React.FC<IEditRequestProps> = (props) => {
 
   return (
     <section className="dashboard-wrapper">
+      <Sidebar userDisplayName={props.userDisplayName} />
+
       <div className="dashboard-main">
         <div className="dashboard-header">
-          <div className="header-left">
-            <div className="company-logo">
-              <img src={sonaLogo} alt="Company Logo" />
-            </div>
-          </div>
-
           <div className="header-center">
             <span className="header-title">EDIT EMPLOYEE REQUEST</span>
-          </div>
-
-          <div className="header-right">
-            <span className="user-name">{props.userDisplayName}</span>
-
-            <div className="user-icon">
-              <img src={UserAvatar} alt="User" />
-            </div>
           </div>
         </div>
 

@@ -1,10 +1,9 @@
 import * as React from "react";
 import { useHistory, RouteComponentProps } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import sonaLogo from "../../assets/Images/SonaLogo.jpg";
-import UserAvatar from "../../assets/Images/UserAvatar.png";
+import Sidebar from "../Pages/SideBar";
 import "../Esop.module.scss";
 
 type IViewRequestProps = IEsopProps & RouteComponentProps<{ id: string }>;
@@ -14,24 +13,12 @@ const ViewRequest: React.FC<IViewRequestProps> = (props) => {
 
   return (
     <section className="dashboard-wrapper">
+      <Sidebar userDisplayName={props.userDisplayName} />
+
       <div className="dashboard-main">
         <div className="dashboard-header">
-          <div className="header-left">
-            <div className="company-logo">
-              <img src={sonaLogo} alt="Company Logo" />
-            </div>
-          </div>
-
           <div className="header-center">
             <span className="header-title">VIEW EMPLOYEE REQUEST</span>
-          </div>
-
-          <div className="header-right">
-            <span className="user-name">{props.userDisplayName}</span>
-
-            <div className="user-icon">
-              <img src={UserAvatar} alt="User" />
-            </div>
           </div>
         </div>
 
@@ -205,8 +192,8 @@ const ViewRequest: React.FC<IViewRequestProps> = (props) => {
                 className="form-cancel-btn"
                 onClick={() => history.push("/")}
               >
-                <FontAwesomeIcon icon={faArrowLeft} />
-                <span>Back</span>
+                <FontAwesomeIcon icon={faTimes} />
+                <span>Cancel</span>
               </button>
             </div>
           </div>

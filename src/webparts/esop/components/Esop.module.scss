@@ -18,21 +18,17 @@
   a {
     text-decoration: none;
     color: "[theme:link, default:#03787c]";
-    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+    color: var(--link);
 
     &:hover {
       text-decoration: underline;
       color: "[theme:linkHovered, default: #014446]";
-      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+      color: var(--linkHovered);
     }
   }
 }
 
 :global{
-  /* =========================================================
-   SHAREPOINT MODERN PAGE FULL WIDTH FIX
-========================================================= */
-
 #spCommandBar,
 #spSiteHeader,
 #spLeftNav,
@@ -138,8 +134,6 @@ html,
 body {
   overflow-x: hidden !important;
 }
-
-/* ===================== END SHAREPOINT FIX ===================== */
 
 .dashboard-wrapper {
   display: flex;
@@ -492,10 +486,6 @@ body {
   border: 1px solid #000000;
 }
 
-/* =========================================================
-   NEW REQUEST FORM CSS START
-========================================================= */
-
 .form-card {
   background: #ffffff;
   border-radius: 8px;
@@ -509,7 +499,6 @@ body {
   gap: 24px;
 }
 
-/* Small "Employee ID: X" line shown at the top of View / Edit forms */
 .form-meta {
   font-size: 14px;
   color: #667085;
@@ -519,8 +508,6 @@ body {
   }
 }
 
-/* Fixed 3-column grid on desktop so every field row lines up evenly,
-   instead of auto-fill widths that shift with content length */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -537,8 +524,6 @@ body {
   grid-column: 1 / -1;
 }
 
-/* Level Name / Father Name / Is Active / Date of Termination row —
-   always exactly 4 across on desktop */
 .form-grid-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -636,7 +621,199 @@ body {
   }
 }
 
-/* ===================== END NEW REQUEST FORM CSS ===================== */
+.sidebar-wrapper {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.sidebar-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.sidebar-brand-name {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-nav-item {
+  padding: 16px 20px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid #1f1f1f;
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #1a1a1a;
+  }
+}
+
+.sidebar-nav-item.active {
+  background: #2c2c2c;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+  padding-left: 12px;
+  border-left: 4px solid #000000;
+}
+
+.form-subsection-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+  padding-left: 10px;
+  border-left: 3px solid #656565;
+}
+
+.form-banner-title {
+  background: #000000;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 4px;
+}
+
+.form-note {
+  font-size: 12px;
+  color: #667085;
+  font-style: italic;
+}
+
+.form-description {
+  font-size: 13px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+.form-radio-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 40px;
+}
+
+.form-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+
+  input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #000000;
+  }
+}
+
+.form-file-input {
+  height: 40px;
+  border: 1px solid #656565;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.form-divider {
+  border: none;
+  border-top: 1px solid #eeeeee;
+  margin: 8px 0;
+}
+
+.btn-submit,
+.btn-draft,
+.btn-back {
+  width: 160px;
+  height: 40px;
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-submit {
+  background: #107c10;
+
+  &:hover {
+    background: #0c5e0c;
+  }
+}
+
+.btn-draft {
+  background: #d97706;
+
+  &:hover {
+    background: #b45f04;
+  }
+}
+
+.btn-back {
+  background: #d92d20;
+
+  &:hover {
+    background: #b3241a;
+  }
+}
 
 @media (max-width: 1024px) {
   .dashboard-input {
@@ -701,6 +878,23 @@ body {
   .form-cancel-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .btn-submit,
+  .btn-draft,
+  .btn-back {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-radio-group {
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .sidebar-wrapper {
+    width: 200px;
+    min-width: 200px;
   }
 }
 }

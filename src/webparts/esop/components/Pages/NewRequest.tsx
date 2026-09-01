@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
 import { faSave, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import sonaLogo from "../../assets/Images/SonaLogo.jpg";
-import UserAvatar from "../../assets/Images/UserAvatar.png";
+import Sidebar from "../Pages/SideBar";
 import "../Esop.module.scss";
 
 const NewRequest: React.FC<IEsopProps> = (props) => {
@@ -12,24 +11,12 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
 
   return (
     <section className="dashboard-wrapper">
+      <Sidebar userDisplayName={props.userDisplayName} />
+
       <div className="dashboard-main">
         <div className="dashboard-header">
-          <div className="header-left">
-            <div className="company-logo">
-              <img src={sonaLogo} alt="Company Logo" />
-            </div>
-          </div>
-
           <div className="header-center">
             <span className="header-title">NEW EMPLOYEE REQUEST</span>
-          </div>
-
-          <div className="header-right">
-            <span className="user-name">{props.userDisplayName}</span>
-
-            <div className="user-icon">
-              <img src={UserAvatar} alt="User" />
-            </div>
           </div>
         </div>
 
@@ -162,11 +149,7 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
                 <label className="form-label" htmlFor="Department">
                   Department
                 </label>
-                <select
-                  id="Department"
-                  className="form-select"
-                  defaultValue=""
-                >
+                <select id="Department" className="form-select" defaultValue="">
                   <option value="" disabled>
                     Select Department
                   </option>
@@ -215,11 +198,7 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
                 <label className="form-label" htmlFor="LevelName">
                   Level Name
                 </label>
-                <select
-                  id="LevelName"
-                  className="form-select"
-                  defaultValue=""
-                >
+                <select id="LevelName" className="form-select" defaultValue="">
                   <option value="" disabled>
                     Select Level Name
                   </option>
@@ -244,7 +223,7 @@ const NewRequest: React.FC<IEsopProps> = (props) => {
                 </label>
                 <select id="IsActive" className="form-select" defaultValue="">
                   <option value="" disabled>
-                    Select Status
+                    Select Is Active
                   </option>
                   <option value="Active">Active</option>
                   <option value="Inactive">Inactive</option>

@@ -1,38 +1,39 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
 import type { IEsopProps } from "../IEsopProps";
-import { faPlus, faEye, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Sidebar from "../Pages/SideBar";
 import "../Esop.module.scss";
 
-export interface IEsopItem {
+export interface IExerciseItem {
   Id?: number;
-  EmployeeCode?: string;
-  EmployeeName?: string;
-  Designation?: string;
-  Department?: string;
-  EmailId?: string;
+  Scheme?: string;
+  GrantedOn?: string;
+  ExercisePrice?: string;
+  VestedOptions?: string;
+  VestedOn?: string;
+  LastExerciseDate?: string;
 }
 
-const Dashboard: React.FC<IEsopProps> = (props) => {
+const ExerciseDashboard: React.FC<IEsopProps> = (props) => {
   const history = useHistory();
-  const [dashboardData, setDashboardData] = React.useState<IEsopItem[]>([]);
-  const [filteredData, setFilteredData] = React.useState<IEsopItem[]>([]);
+  const [exerciseData, setExerciseData] = React.useState<IExerciseItem[]>([]);
+  const [filteredData, setFilteredData] = React.useState<IExerciseItem[]>([]);
   const [searchText, setSearchText] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 5;
 
-  const getDashboardData = async (): Promise<void> => {
+  const getExerciseData = async (): Promise<void> => {
     setIsLoading(true);
 
     try {
-      const response: IEsopItem[] = [];
+      const response: IExerciseItem[] = [];
 
-      setDashboardData(response || []);
+      setExerciseData(response || []);
     } catch (error) {
-      console.error("Dashboard Fetch Error:", error);
+      console.error("Exercise Dashboard Fetch Error:", error);
     } finally {
       setIsLoading(false);
     }
@@ -40,29 +41,22 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
 
   React.useEffect(() => {
     if (props.userEmail) {
-      void getDashboardData();
+      void getExerciseData();
     }
   }, [props.userEmail]);
 
   React.useEffect(() => {
-    let data = [...dashboardData];
+    let data = [...exerciseData];
 
     if (searchText.trim()) {
       const search = searchText.toLowerCase();
 
-      data = data.filter(
-        (item) =>
-          item.EmployeeCode?.toLowerCase().includes(search) ||
-          item.EmployeeName?.toLowerCase().includes(search) ||
-          item.Designation?.toLowerCase().includes(search) ||
-          item.Department?.toLowerCase().includes(search) ||
-          item.EmailId?.toLowerCase().includes(search),
-      );
+      data = data.filter((item) => item.Scheme?.toLowerCase().includes(search));
     }
 
     setFilteredData(data);
     setCurrentPage(1);
-  }, [searchText, dashboardData]);
+  }, [searchText, exerciseData]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
@@ -111,9 +105,7 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
       <div className="dashboard-main">
         <div className="dashboard-header">
           <div className="header-center">
-            <span className="header-title">
-              ESOP Employee Master – Admin Dashboard
-            </span>
+            <span className="header-title">CREATE EXERCISE DASHBOARD</span>
           </div>
         </div>
 
@@ -121,18 +113,10 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
           <div className="dashboard-filter-card">
             <input
               className="dashboard-input"
-              placeholder="Search"
+              placeholder="Search Scheme"
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
-
-            <button
-              className="new-po-btn"
-              onClick={() => history.push("/NewEsopRequest")}
-            >
-              <FontAwesomeIcon icon={faPlus} />
-              <span>Add New Employee</span>
-            </button>
           </div>
 
           <div className="table-card">
@@ -140,49 +124,42 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
               <table className="dashboard-table">
                 <thead>
                   <tr>
-                    <th>Employee Code</th>
-                    <th>Employee Name</th>
-                    <th>Designation</th>
-                    <th>Department</th>
-                    <th>Email ID</th>
-                    <th>View</th>
-                    <th>Edit</th>
+                    <th>Sr No.</th>
+                    <th>Scheme</th>
+                    <th>Granted On</th>
+                    <th>Exercise Price</th>
+                    <th>Vested Options</th>
+                    <th>Vested On</th>
+                    <th>Last Exercise Date</th>
+                    <th>Exercise Form</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   {paginatedData.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="no-data">
-                        No records found
+                      <td colSpan={8} className="no-data">
+                        No Records Found
                       </td>
                     </tr>
                   ) : (
-                    paginatedData.map((item) => (
+                    paginatedData.map((item, index) => (
                       <tr key={item.Id || 0}>
-                        <td>{item.EmployeeCode}</td>
-                        <td>{item.EmployeeName}</td>
-                        <td>{item.Designation}</td>
-                        <td>{item.Department}</td>
-                        <td>{item.EmailId}</td>
+                        <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
+                        <td>{item.Scheme}</td>
+                        <td>{item.GrantedOn}</td>
+                        <td>{item.ExercisePrice}</td>
+                        <td>{item.VestedOptions}</td>
+                        <td>{item.VestedOn}</td>
+                        <td>{item.LastExerciseDate}</td>
                         <td>
                           <button
                             className="action-btn view-btn"
                             onClick={() =>
-                              history.push(`/ViewEsopRequest/${item.Id}`)
+                              history.push(`/ExerciseForm/${item.Id}`)
                             }
                           >
-                            <FontAwesomeIcon icon={faEye} />
-                          </button>
-                        </td>
-                        <td>
-                          <button
-                            className="action-btn edit-btn"
-                            onClick={() =>
-                              history.push(`/EditEsopRequest/${item.Id}`)
-                            }
-                          >
-                            <FontAwesomeIcon icon={faEdit} />
+                            <FontAwesomeIcon icon={faFileAlt} />
                           </button>
                         </td>
                       </tr>
@@ -236,4 +213,4 @@ const Dashboard: React.FC<IEsopProps> = (props) => {
   );
 };
 
-export default Dashboard;
+export default ExerciseDashboard;
